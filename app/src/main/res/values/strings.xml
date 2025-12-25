@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Electronic Queue</string>
+
+    <string name="title_join">Электронная очередь</string>
+    <string name="subtitle_join">Получите номер и дождитесь вызова на экране</string>
+    <string name="hint_name">Имя или номер кабинета</string>
+    <string name="helper_name">Например: Иван</string>
+    <string name="action_join">Встать в очередь</string>
+    <string name="error_generic">Не удалось выполнить запрос. Проверьте соединение.</string>
+
+    <string name="title_queue">Ваш талон</string>
+    <string name="label_ticket">Талон</string>
+    <string name="label_current">Сейчас обслуживается</string>
+    <string name="label_ahead">Перед вами</string>
+    <string name="label_status">Статус</string>
+    <string name="action_refresh">Обновить</string>
+    <string name="unit_people">чел.</string>
+
+    <string name="splash_subtitle">Локальная демонстрация: Android + эмуляция Raspberry Pi</string>
+</resources>

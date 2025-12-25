@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="eq_primary">#D0BCFF</color>
+    <color name="eq_primary_variant">#B69DF8</color>
+    <color name="eq_on_primary">#381E72</color>
+    <color name="eq_secondary">#CCC2DC</color>
+    <color name="eq_secondary_variant">#B0A7C0</color>
+    <color name="eq_on_secondary">#332D41</color>
+    <color name="eq_background">#121212</color>
+    <color name="eq_surface">#1E1E1E</color>
+    <color name="eq_on_surface">#E6E1E5</color>
+    <color name="eq_muted">#CAC4D0</color>
+</resources>
