@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """
-Electronic Queue - simple REST server (Raspberry Pi role) with SQLite storage.
 
 Endpoints:
 - GET  /health
@@ -9,11 +8,6 @@ Endpoints:
 - GET  /queue/status?ticket=  -> {"ticket": int, "status": str, "position": int, "current_ticket": int}
 - POST /queue/next            -> {"current_ticket": int, "last_ticket": int, "length": int}
 - POST /queue/reset           -> clear queue (demo helper)
-
-Notes:
-- For demo purposes, an auto-advancer thread can move the queue every N seconds.
-- Designed to run inside Raspberry Pi Desktop VM (VirtualBox) and be reached from Android Emulator via
-  Host port forwarding (Android Emulator uses http://10.0.2.2:<port> to reach the host).
 """
 from __future__ import annotations
 
