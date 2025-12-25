@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><bool name="is_light_status_bar">true</bool></resources>
+<resources>
+    <bool name="eq_light_system_bars">true</bool>
+</resources>

@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="eq_primary">#6750A4</color>
-    <color name="eq_primary_variant">#5B44A1</color>
+    <!-- Brand palette (light) -->
+    <color name="eq_primary">#1E5EFF</color>
+    <color name="eq_primary_variant">#1748C5</color>
     <color name="eq_on_primary">#FFFFFF</color>
-    <color name="eq_secondary">#625B71</color>
-    <color name="eq_secondary_variant">#544E63</color>
-    <color name="eq_on_secondary">#FFFFFF</color>
-    <color name="eq_background">#FFFFFF</color>
+
+    <color name="eq_secondary">#00BFA5</color>
+    <color name="eq_secondary_variant">#009E88</color>
+    <color name="eq_on_secondary">#00201B</color>
+
+    <!-- Surfaces -->
+    <color name="eq_background">#F6F7FB</color>
     <color name="eq_surface">#FFFFFF</color>
-    <color name="eq_on_surface">#1C1B1F</color>
-    <color name="eq_muted">#4A4458</color>
+    <color name="eq_on_surface">#111318</color>
+
+    <!-- Feedback -->
+    <color name="eq_error">#B3261E</color>
+    <color name="eq_on_error">#FFFFFF</color>
+
+    <!-- Extras -->
+    <color name="eq_outline">#D9DCE6</color>
+    <color name="eq_muted">#5A5F6A</color>
+    <color name="eq_status_waiting_bg">#FFF4D6</color>
+    <color name="eq_status_waiting_text">#6A4B00</color>
+    <color name="eq_status_called_bg">#DFF7E6</color>
+    <color name="eq_status_called_text">#0F5D2C</color>
+    <color name="eq_status_done_bg">#E9ECF2</color>
+    <color name="eq_status_done_text">#3A3F4B</color>
 </resources>
