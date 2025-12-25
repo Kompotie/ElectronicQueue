@@ -4,6 +4,9 @@
 from __future__ import annotations
 
 import json
+
+import threading
+import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
@@ -64,7 +67,20 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(200, {"status": "ok"})
         return self._json(404, {"error": "not_found"})
 
+AUTO_ADVANCE_SECONDS = 10
+
+def _auto_worker():
+    while True:
+        time.sleep(AUTO_ADVANCE_SECONDS)
+        try:
+            db.next()
+        except Exception:
+            pass
+
 def main() -> None:
+
+    t = threading.Thread(target=_auto_worker, daemon=True)
+    t.start()
     httpd = ThreadingHTTPServer((HOST, PORT), Handler)
     print(f"Server listening on http://{HOST}:{PORT}")
     httpd.serve_forever()
