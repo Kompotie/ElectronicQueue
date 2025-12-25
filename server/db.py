@@ -20,16 +20,9 @@ class State:
 
 class QueueDb:
     """
-    SQLite-backed queue with very simple state machine:
     - WAITING: user is waiting
     - CALLED: ticket is currently served (current_ticket)
     - DONE: ticket is already served
-
-    Rules:
-    - current_ticket starts at 0
-    - last_ticket starts at 0
-    - join() creates ticket last_ticket+1 as WAITING
-    - advance() increments current_ticket, marks new current as CALLED, previous CALLED as DONE (if any)
     """
     def __init__(self, path: str):
         self.path = path
