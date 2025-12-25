@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.ElectronicQueue" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Colors -->
+        <item name="colorPrimary">@color/eq_primary</item>
+        <item name="colorPrimaryVariant">@color/eq_primary_variant</item>
+        <item name="colorOnPrimary">@color/eq_on_primary</item>
+
+        <item name="colorSecondary">@color/eq_secondary</item>
+        <item name="colorSecondaryVariant">@color/eq_secondary_variant</item>
+        <item name="colorOnSecondary">@color/eq_on_secondary</item>
+
+        <item name="colorBackground">@color/eq_background</item>
+        <item name="colorSurface">@color/eq_surface</item>
+        <item name="colorOnSurface">@color/eq_on_surface</item>
+
+        <item name="colorError">@color/eq_error</item>
+        <item name="colorOnError">@color/eq_on_error</item>
+
+        <!-- System bars -->
+        <item name="android:statusBarColor">@color/eq_background</item>
+        <item name="android:navigationBarColor">@color/eq_background</item>
+        <item name="android:windowBackground">@color/eq_background</item>
+
+        <!-- Dark icons on light bars -->
+        <item name="android:windowLightStatusBar">@bool/eq_light_system_bars</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o">@bool/eq_light_system_bars</item>
+
+        <!-- Default widgets -->
+        <item name="materialButtonStyle">@style/Widget.ElectronicQueue.Button</item>
+        <item name="textInputStyle">@style/Widget.ElectronicQueue.TextInput</item>
+    </style>
+</resources>
