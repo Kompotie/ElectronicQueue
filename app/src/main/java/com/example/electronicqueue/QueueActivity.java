@@ -29,6 +29,8 @@ public class QueueActivity extends AppCompatActivity {
 
     private int ticket;
 
+    private boolean notified = false;
+
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable pollTask = new Runnable() {
         @Override
@@ -79,6 +81,10 @@ public class QueueActivity extends AppCompatActivity {
                     currentText.setText("Сейчас обслуживается: " + r.current_ticket);
                     positionText.setText("Перед вами: " + r.position);
                     statusText.setText("Статус: " + r.status);
+                    if (!notified && "CALLED".equalsIgnoreCase(r.status) && r.current_ticket == ticket) {
+                        notified = true;
+                        com.example.electronicqueue.util.NotificationHelper.notifyCalled(QueueActivity.this, ticket);
+                    }
                 });
             } catch (Exception e) {
                 runOnUiThread(() -> {
