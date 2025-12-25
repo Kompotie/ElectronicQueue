@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 import com.example.electronicqueue.api.ApiClient;
 import com.example.electronicqueue.model.JoinResponse;
 
@@ -23,51 +25,55 @@ public class JoinActivity extends AppCompatActivity {
     private EditText nameInput;
     private Button joinBtn;
     private ProgressBar progress;
-    private TextView infoText;
+    private TextView errorText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(getString(R.string.app_name));
+
         nameInput = findViewById(R.id.nameInput);
         joinBtn = findViewById(R.id.joinBtn);
         progress = findViewById(R.id.progress);
-        infoText = findViewById(R.id.infoText);
+        errorText = findViewById(R.id.errorText);
 
-        joinBtn.setOnClickListener(v -> doJoin());
+        joinBtn.setOnClickListener(v -> joinQueue());
     }
 
-    private void doJoin() {
-        final String name = nameInput.getText().toString().trim();
+    private void joinQueue() {
+        errorText.setText("");
+        String name = nameInput.getText().toString().trim();
         if (name.isEmpty()) {
-            infoText.setText("Введите имя.");
+            errorText.setText("Введите имя");
             return;
         }
 
-        setLoading(true);
+        progress.setVisibility(View.VISIBLE);
+        joinBtn.setEnabled(false);
+
         executor.execute(() -> {
             try {
-                JoinResponse r = ApiClient.join(name);
+                JoinResponse resp = ApiClient.join(name);
                 runOnUiThread(() -> {
-                    setLoading(false);
-                    infoText.setText("Ваш талон: " + r.ticket);
-                    Intent i = new Intent(this, QueueActivity.class);
-                    i.putExtra("ticket", r.ticket);
+                    progress.setVisibility(View.GONE);
+                    joinBtn.setEnabled(true);
+
+                    Intent i = new Intent(JoinActivity.this, QueueActivity.class);
+                    i.putExtra("ticket", resp.ticket);
+                    i.putExtra("name", name);
                     startActivity(i);
                 });
             } catch (Exception e) {
                 runOnUiThread(() -> {
-                    setLoading(false);
-                    infoText.setText("Ошибка сети: " + e.getMessage());
+                    progress.setVisibility(View.GONE);
+                    joinBtn.setEnabled(true);
+                    errorText.setText("Ошибка: " + e.getMessage());
                 });
             }
         });
-    }
-
-    private void setLoading(boolean loading) {
-        progress.setVisibility(loading ? View.VISIBLE : View.GONE);
-        joinBtn.setEnabled(!loading);
     }
 
     @Override

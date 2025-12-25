@@ -7,6 +7,8 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import com.example.electronicqueue.R;
+
 public class NotificationHelper {
 
     private static final String CHANNEL_ID = "queue_channel";
@@ -24,17 +26,15 @@ public class NotificationHelper {
         }
     }
 
-    public static void notifyCalled(Context ctx, int ticket) {
-        ensureChannel(ctx);
-
+    public static void showTurnNotification(Context ctx, int ticket) {
         NotificationCompat.Builder b = new NotificationCompat.Builder(ctx, CHANNEL_ID)
-                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle("Ваша очередь подошла")
-                .setContentText("Талон №" + ticket + " — можно подойти к окну.")
-                .setAutoCancel(true)
-                .setPriority(NotificationCompat.PRIORITY_HIGH);
+                .setContentText("Подойдите к окну. Талон №" + ticket)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setAutoCancel(true);
 
         NotificationManager nm = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-        nm.notify(ticket, b.build());
+        nm.notify(10000 + ticket, b.build());
     }
 }
